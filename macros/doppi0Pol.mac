@@ -1,0 +1,61 @@
+#
+#####Pre-Initialisation
+#Choose a physics list, for a full listing type /A2/physics/ListPhysics
+/Pol/physics/Physics QGSP_BIC_POL
+
+####Initialise
+/run/verbose 1
+/run/initialize
+
+/Pol/physics/SetRegion CB
+/Pol/physics/RegionCut  0.1 mm
+/Pol/physics/SetRegion TAPS
+/Pol/physics/RegionCut  0.1 mm
+/Pol/physics/SetRegion TAPSV
+/Pol/physics/RegionCut 0.01 mm
+/Pol/physics/SetRegion PID
+/Pol/physics/RegionCut 0.01 mm
+/Pol/physics/SetRegion MWPC
+/Pol/physics/RegionCut 0.1 mm
+
+##the initial random number seed
+/A2/generator/Seed 1111111
+
+#Set the number of particles to be tracked from the input ntuple
+/A2/generator/NToBeTracked 3
+#give the indexes of the particles to be tracked
+#(have a look at the branch names in the input file)
+/A2/generator/Track 1
+/A2/generator/Track 2
+/A2/generator/Track 3
+#Open the file and set up the ntuple for reading
+#/A2/generator/InputFile /w/work14/chris/AcquMC/GP_PPi0/FoamOut/PPi0_AcquMC_OutputNtuple.root
+/A2/generator/InputFile /scratch/chris/Simulations/16d11m16y/AcquMC/FoamOut/PPi0_AcquMC_OutputNtuple.root
+
+#####From Polqf
+/Pol/pol/Ay-Process p-elastic
+/Pol/pol/Ay-Value 0.
+/Pol/pol/Ay-Model McNaughton
+/Pol/pol/Ay-Process n-elastic
+/Pol/pol/Ay-Value 0.
+/Pol/pol/Ay-Model McNaughton
+/Pol/pol/Ay-Process p-inelastic
+/Pol/pol/Ay-Value 0.
+/Pol/pol/Ay-Model McNaughton
+/Pol/pol/Ay-Process n-inelastic
+/Pol/pol/Ay-Value 0.
+/Pol/pol/Ay-Model McNaughton
+#/Pol/pol/UseDetFrame true
+#/gun/position 0 0 -20 cm
+/gun/position 0 0 -50 cm
+#/gun/direction 0 0.2 1
+#/gun/energy 200 MeV
+/gun/particle proton
+/gun/polarization 1 0 0
+#/run/beamOn 400000000
+/run/beamOn 1000000
+
+#####Output
+#Open the output file for writing
+/A2/event/setOutputFile /scratch/chris/Simulations/16d11m16y/AcquMC/a2geantOut/Polarised/Pol_PPi0_1M.root
+#/A2/event/setOutputFile /w/work14/chris/AcquMC/GP_PPi0/a2geantOut/Polarised/Pol_PPi0_1M.root
