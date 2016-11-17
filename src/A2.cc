@@ -25,7 +25,7 @@
 #endif
 
 #include "A2DetectorConstruction.hh"
-#include "A2PhysicsList.hh"
+#include "PolPhysicsList.hh"
 #include "A2PrimaryGeneratorAction.hh"
 #include "A2RunAction.hh"
 #include "A2EventAction.hh"
@@ -162,7 +162,7 @@ int main(int argc,char** argv) {
   runManager->SetUserInitialization(detector);
   //runManager->SetUserInitialization(new LHEP_BIC);
   // Use below insted if cannot install physics_list
-  runManager->SetUserInitialization(new A2PhysicsList);
+  runManager->SetUserInitialization(new PolPhysicsList);
 
   G4UIsession* session = 0;
   G4UIExecutive* uiexecutive =0;
