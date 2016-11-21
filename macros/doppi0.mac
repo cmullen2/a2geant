@@ -25,17 +25,22 @@
 /A2/generator/Seed 1111111
 
 #Set the number of particles to be tracked from the input ntuple
-/A2/generator/NToBeTracked 2
+/A2/generator/NToBeTracked 4
 #give the indexes of the particles to be tracked
 #(have a look at the branch names in the input file)
 /A2/generator/Track 1
 /A2/generator/Track 2
-#/A2/generator/Track 3
-#/A2/generator/Track 4
+/A2/generator/Track 3
+/A2/generator/Track 4
 #Open the file and set up the ntuple for reading
 #/A2/generator/InputFile /w/work14/chris/AcquMC/GP_PPi0/FoamOut/PPi0_AcquMC_OutputNtuple.root
-/A2/generator/InputFile /scratch/chris/Simulations/16d11m16y/AcquMC/FoamOut/PPi0_AcquMC_OutputNtuple.root
+#/A2/generator/InputFile /scratch/chris/Simulations/16d11m16y/AcquMC/FoamOut/PPi0_AcquMC_OutputNtuple.root
+#/A2/generator/InputFile /scratch/chris/Simulations/16d11m16y/AcquMC/FoamOut/Deuterium/BeamAsym/PosPolarisation/PosPol.root
+/A2/generator/InputFile /scratch/chris/Simulations/16d11m16y/AcquMC/FoamOut/Deuterium/BeamAsym/NegPolarisation/NegPol.root
+#
+#
 #####Output
 #Open the output file for writing
-/A2/event/setOutputFile /scratch/chris/Simulations/16d11m16y/AcquMC/a2geantOut/NonPolarised/NonPol_PPi0_1M.root
+#/A2/event/setOutputFile /scratch/chris/Simulations/16d11m16y/AcquMC/a2geantOut/Deuterium/BeamAsym/PosPolarisation/A2OutPosPol.root
+/A2/event/setOutputFile /scratch/chris/Simulations/16d11m16y/AcquMC/a2geantOut/Deuterium/BeamAsym/NegPolarisation/A2OutNegPol.root
 #/A2/event/setOutputFile /w/work14/chris/AcquMC/GP_PPi0/a2geantOut/NonPolarised/NonPol_PPi0_1M.root
