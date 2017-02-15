@@ -79,6 +79,7 @@ public:
 //-----------------------------------------------------------------------------
 inline G4double PolNucleonRotate::Ay( G4double Plab, G4double th )
 {
+  
   // Polarised Nucleon-Carbon12-Hydrogen scattering analysing power
   //
   G4double pp = Plab/1000;                            // MeV -> GeV
@@ -110,6 +111,7 @@ inline G4double PolNucleonRotate::Ay( G4double Plab, G4double th )
     Ap = AySikora(pp,th);
     break;
   }
+
   //Ap *= fact;//multiply by default...
   //Ap=1;
   return Ap;

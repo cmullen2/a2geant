@@ -107,7 +107,7 @@ G4HadronicProcess( processName, aType)
 void PolHadronicProcess::FillResult(G4HadFinalState * aR, const G4Track & aT)
 {
   theTotalResult->ProposeLocalEnergyDeposit(aR->GetLocalEnergyDeposit());
-
+ 
   G4double rotation = CLHEP::twopi*G4UniformRand();
   G4ThreeVector it(0., 0., 1.);
 

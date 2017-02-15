@@ -44,8 +44,9 @@ public:
 };
 
 //-----------------------------------------------------------------------------
-inline G4double PolNPRotate::Ay( G4double pp, G4double thp )
+G4double PolNPRotate::Ay( G4double pp, G4double thp )
 {
+    
   G4double Ap;
   //SAID observables are for NP scatter, need opposite angles for PN
   //convert momentum to energy
@@ -59,7 +60,9 @@ inline G4double PolNPRotate::Ay( G4double pp, G4double thp )
  else if(fScatType==EScatNP&&fExchange==false) Ap=fAyh->GetBinContent(fAyh->FindFixBin(pp/MeV,thp/deg)); //SAID is for NP,
  else if(fScatType==EScatNP&&fExchange==true) Ap=-fAyh->GetBinContent(fAyh->FindFixBin(pp/MeV,90-thp/deg)); //SAID is for NP, switch sign for charge exchange
  else Ap=fAyh->GetBinContent(fAyh->FindFixBin(pp/MeV,thp/deg));
-  
+  if (pp/MeV >20)   {
+  G4cout<<"PolRot Ap-> "<<Ap<<" Energy-> "<<pp/MeV<<" thp-> "<<thp/deg<<" fScatType-> "<<fScatType<<" fExchange-> "<<fExchange<<G4endl;
+  }
   // if(Ap>0) Ap=1;  //maximum asymmetry
   // if(Ap<0) Ap=-1;
   

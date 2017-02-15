@@ -13,6 +13,7 @@ PolHadronQuasiFreeProcess(const G4String& processName,
   AddDataSet(new G4HadronInelasticDataSet());
   theParticle = aParticle;
   fPolRotNP = new PolNPRotate(0,0,0);
+
 }
 
 PolHadronQuasiFreeProcess::~PolHadronQuasiFreeProcess() 
@@ -22,17 +23,18 @@ PolHadronQuasiFreeProcess::~PolHadronQuasiFreeProcess()
 void PolHadronQuasiFreeProcess::FillResult(G4HadFinalState * aR, const G4Track & aT)
 {
   theTotalResult->ProposeLocalEnergyDeposit(aR->GetLocalEnergyDeposit());
-
   G4double rotation = CLHEP::twopi*G4UniformRand();
   G4ThreeVector it(0., 0., 1.);
 
   G4double efinal = aR->GetEnergyChange();
   if(efinal < 0.0) { efinal = 0.0; }
+  
 
   // check status of primary
   if(aR->GetStatusChange() == stopAndKill) {
     theTotalResult->ProposeTrackStatus(fStopAndKill);
     theTotalResult->ProposeEnergy( 0.0 );
+
 
     // check its final energy
   } else if(0.0 == efinal) {
@@ -97,7 +99,7 @@ void PolHadronQuasiFreeProcess::FillResult(G4HadFinalState * aR, const G4Track &
 	  if(secDP->GetKineticEnergy()>highKE2 && i!=ip)
 	    { highKE2 = secDP->GetKineticEnergy(); ip2 = i;}
       }
-      // G4cout<<aR->GetNumberOfSecondaries()<<" "<<highKE+highKE2<<" "<<aT.GetDynamicParticle()->GetKineticEnergy()<<G4endl;
+      // G4cout<<"Just checking No.Seconds->  "<<aR->GetNumberOfSecondaries()<<" sum E1+E2-> "<<highKE+highKE2<<" KineticEnergy of dynamic particle -> "<<aT.GetDynamicParticle()->GetKineticEnergy()<<G4endl;
      // Recalculate phi angle, and return the rotation needed to get it there 
       // phiPol=fPolRot->GetPolarisedRotation(aR->GetSecondary(ip)->GetParticle(),
       //				  aT.GetDynamicParticle());
@@ -124,8 +126,10 @@ void PolHadronQuasiFreeProcess::FillResult(G4HadFinalState * aR, const G4Track &
 	  phiPol = fPolRotNP->GetPolarisedRotation(aR->GetSecondary(ip)->GetParticle()->GetMomentum(),aT.GetDynamicParticle());
 	}
 	else phiPol = 0; //not quasifree or similar, assume no analysing power
+	//G4cout<<"TARGETDEF "<<targetDef<<G4endl;
       }
       else if (ip > -1) {
+	//G4cout<<"NOT TARGETDEF "<<G4endl;
 	phiPol=fPolRot->GetPolarisedRotation(aR->GetSecondary(ip)->GetParticle()->GetMomentum(),aT.GetDynamicParticle()); //not quasifree but can use other parameterisation
       }
       else phiPol = 0; //no nucleon in final state
