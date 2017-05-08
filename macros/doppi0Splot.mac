@@ -1,0 +1,72 @@
+#
+#####Pre-Initialisation
+#Choose a physics list, for a full listing type /A2/physics/ListPhysics
+#/A2/physics/Physics QGSP_BIC
+#/A2/physics/Physics QGSP_BERT_CHIPS
+
+/Pol/physics/Physics QGSP_BIC_POL
+
+
+####Initialise
+/run/verbose 1
+/run/initialize
+#/A2/physics/CutEl 0.01 mm
+#/A2/physics/CutsAll 0.01 mm
+
+
+/Pol/physics/SetRegion CB
+/Pol/physics/RegionCut  0.1 mm
+/Pol/physics/SetRegion TAPS
+/Pol/physics/RegionCut  0.1 mm
+/Pol/physics/SetRegion TAPSV
+/Pol/physics/RegionCut 0.01 mm
+/Pol/physics/SetRegion PID
+/Pol/physics/RegionCut 0.01 mm
+/Pol/physics/SetRegion MWPC
+/Pol/physics/RegionCut 0.1 mm
+
+#/A2/physics/SetRegion CB
+#/A2/physics/RegionCut  0.1 mm
+#/A2/physics/SetRegion TAPS
+#/A2/physics/RegionCut  0.1 mm
+#/A2/physics/SetRegion TAPSV
+#/A2/physics/RegionCut 0.01 mm
+#/A2/physics/SetRegion PID
+#/A2/physics/RegionCut 0.01 mm
+#/A2/physics/SetRegion MWPC
+#/A2/physics/RegionCut 0.1 mm
+
+##the initial random number seed
+/A2/generator/Seed 1111111
+
+#Set the number of particles to be tracked from the input ntuple
+/A2/generator/NToBeTracked 4
+#give the indexes of the particles to be tracked
+#(have a look at the branch names in the input file)
+/A2/generator/Track 1
+/A2/generator/Track 2
+/A2/generator/Track 3
+/A2/generator/Track 4
+#Open the file and set up the ntuple for reading
+
+#/A2/generator/InputFile /w/work14/chris/ForSPlots/Simulations/FoamOut/PosPol/
+/A2/generator/InputFile /w/work14/chris/ForSPlots/Simulations/FoamOut/NegPol/NegPolNtuple*
+
+
+#/A2/generator/InputFile /w/work14/chris/ForRoddy/NewSim/Foamout/PPi0_OutputNtuple.root
+#/A2/generator/InputFile /w/work14/chris/AcquMC/GP_PPi0/FoamOut/PPi0_AcquMC_OutputNtuple.root
+#/A2/generator/InputFile /scratch/chris/Simulations/16d11m16y/AcquMC/FoamOut/PPi0_AcquMC_OutputNtuple.root
+#/A2/generator/InputFile /scratch/chris/Simulations/16d11m16y/AcquMC/FoamOut/Deuterium/BeamAsym/PosPolarisation/PosPol.root
+#/A2/generator/InputFile /scratch/chris/Simulations/16d11m16y/AcquMC/FoamOut/Deuterium/BeamAsym/NegPolarisation/NegPol.root
+#
+#
+#####Output
+#Open the output file for writing
+
+#/A2/event/setOutputFile /w/work14/chris/ForSPlots/Simulations/A2GeantOut/PosPol/
+/A2/event/setOutputFile /w/work14/chris/ForSPlots/Simulations/A2GeantOut/NegPol/
+
+#/A2/event/setOutputFile /w/work14/chris/ForRoddy/NewSim/a2geantout/PPi0.root
+#/A2/event/setOutputFile /scratch/chris/Simulations/16d11m16y/AcquMC/a2geantOut/Deuterium/BeamAsym/PosPolarisation/A2OutPosPol.root
+#/A2/event/setOutputFile /scratch/chris/Simulations/16d11m16y/AcquMC/a2geantOut/Deuterium/BeamAsym/NegPolarisation/A2OutNegPol.root
+#/A2/event/setOutputFile /w/work14/chris/AcquMC/GP_PPi0/a2geantOut/NonPolarised/NonPol_PPi0_1M.root
