@@ -43,7 +43,7 @@ GetPolarisedRotation(const G4ThreeVector newP,
   //*PolNN = Pol;
   G4double phi0 = Pol.phi();
   G4double ay = Ay(oldPart->GetTotalMomentum(),newP.theta());
-  //ay =1; //CAM 02/02/2017
+  ay =1; //CAM 02/02/2017
   G4double newphi = pi*G4UniformRand();
   if( 2*G4UniformRand() > (1+ay*Pt*sin(newphi)) ) newphi=-pi+newphi; 
   newphi+=phi0;
